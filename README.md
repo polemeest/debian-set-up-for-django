@@ -55,19 +55,19 @@ mkdir ~/code
 Build from source python 3.7, install with prefix to ~/.python folder:
 
 ```
-wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz ; \
-tar xvf Python-3.7.* ; \
-cd Python-3.7.3 ; \
+wget https://www.python.org/ftp/python/3.12.1/Python-3.12.1.tgz ; \
+tar xvf Python-3.12.* ; \
+cd Python-3.12.1 ; \
 mkdir ~/.python ; \
 ./configure --enable-optimizations --prefix=/home/www/.python ; \
 make -j8 ; \
 sudo make altinstall
 ```
 
-Now python3.7 in `/home/www/.python/bin/python3.7`. Update pip:
+Now python3.12 in `/home/www/.python/bin/python3.12`. Update pip:
 
 ```
-sudo /home/www/.python/bin/python3.7 -m pip install -U pip
+sudo /home/www/.python/bin/python3.12 -m pip install -U pip
 ```
 
 Ok, now we can pull our project from Git repository (or create own), create and activate Python virtual environment:
@@ -76,20 +76,20 @@ Ok, now we can pull our project from Git repository (or create own), create and 
 cd code
 git pull project_git
 cd project_dir
-python3.7 -m venv env
+python3.12 -m venv env
 . ./env/bin/activate
 ```
 
 ## Install and configure PostgreSQL
 
-Install PostgreSQL 11 and configure locales.
+Install PostgreSQL 16and configure locales.
 
 ```
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - ; \
 RELEASE=$(lsb_release -cs) ; \
 echo "deb http://apt.postgresql.org/pub/repos/apt/ ${RELEASE}"-pgdg main | sudo tee  /etc/apt/sources.list.d/pgdg.list ; \
 sudo apt update ; \
-sudo apt -y install postgresql-11 ; \
+sudo apt -y install postgresql-16 ; \
 sudo localedef ru_RU.UTF-8 -i ru_RU -fUTF-8 ; \
 export LANGUAGE=ru_RU.UTF-8 ; \
 export LANG=ru_RU.UTF-8 ; \
