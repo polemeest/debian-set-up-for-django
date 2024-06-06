@@ -189,3 +189,26 @@ limit_request_fields = 32000
 limit_request_field_size = 0
 raw_env = 'DJANGO_SETTINGS_MODULE=project.settings'
 ```
+
+Nginx basic cofigs here:
+
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+        # root /home/sysadmin/Licensing_portal_Anton/src;
+        server_name http://portal.wico.pro/;
+
+        
+        location / {
+                proxy_pass http://127.0.0.1:8005;
+                proxy_set_header X-Forwarded-Host $server_name;
+                proxy_set_header X-Real-IP $remote_addr;
+                add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+                add_header Access-Control-Allow-Origin *;
+        }
+
+}
+```
