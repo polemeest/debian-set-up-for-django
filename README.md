@@ -198,7 +198,6 @@ server {
         listen [::]:80 default_server;
 
         root /var/www/html;
-        # root /home/sysadmin/Licensing_portal_Anton/src;
         server_name http://portal.wico.pro/;
 
         
